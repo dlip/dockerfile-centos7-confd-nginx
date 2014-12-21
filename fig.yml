@@ -1,2 +1,13 @@
 nginx:
   build: .
+  volumes:
+    - "files/nginx-start.sh:/usr/bin/nginx-start.sh"
+    - "files/nginx-supervisord.conf:/etc/supervisord.d/nginx.conf"
+    - "files/nginx.toml:/etc/confd/conf.d/nginx.toml"
+    - "files/nginx.conf.tmpl:/etc/confd/templates/nginx.conf.tmpl"
+  ports:
+    - "8080:80"
+  environment:
+    CONFD_BACKEND: env
+    NGINX_SERVER1: 123.123.123.123
+    NGINX_SERVER2: 333.333.333.333

@@ -1,5 +1,5 @@
 upstream proxy_pool {
-  {{range getvs "/services/apache/*"}}
+  {{range getvs "/nginx/*"}}
     server {{.}};
   {{end}}
 }
